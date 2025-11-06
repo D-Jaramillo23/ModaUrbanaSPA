@@ -1,5 +1,10 @@
 package com.modaurbana.spa.ui.navigation
 
+import androidx.compose.material3.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.NavHost
@@ -18,16 +23,57 @@ fun AppNav() {
         startDestination = Routes.Login
     ) {
         composable(Routes.Login){
-            androidx.compose.material3.Text("Login (Temporal)")
+            Column (modifier = Modifier.padding(16.dp)) {
+                Text("Login (temporal", style = MaterialTheme.typography.titleLarge)
+                Spacer(Modifier.height(16.dp))
+                Button(onClick = { nav.navigate(Routes.Register)}) {
+                    Text("Ir a Register")
+                }
+                Spacer(Modifier.height(8.dp))
+                Button(onClick = { nav.navigate(Routes.Home)}) {
+                    Text("Entrar (temporal)")
+                }
+
+            }
         }
         composable(Routes.Register){
-            androidx.compose.material3.Text("Register (temporal)")
+            Column (modifier = Modifier.padding(16.dp)){
+                Text("Register (temporal)", style = MaterialTheme.typography.titleLarge)
+                Spacer(Modifier.height(16.dp))
+                Button(onClick = { nav.popBackStack()}){
+                    Text("Volver a Login")
+                }
+                Spacer(Modifier.height(8.dp))
+                Button(onClick = { nav.navigate(Routes.Login)}) {
+                    Text("Registrarme (Temporal)")
+                }
+            }
         }
         composable(Routes.Home) {
-            androidx.compose.material3.Text("Home (temporal")
+            Column(modifier = Modifier.padding(16.dp)) {
+                Text("Home (temporal)", style = MaterialTheme.typography.titleLarge)
+                Spacer(Modifier.height(16.dp))
+                Button(onClick = { nav.navigate(Routes.Profile)}) {
+                    Text("Ir a profile")
+                }
+                Spacer(Modifier.height(8.dp))
+                Button(onClick = {
+                    nav.navigate(Routes.Login) {
+                        popUpTo(Routes.Home) { inclusive = true }
+                    }
+                }) {
+                    Text("Logout(Temporal)")
+                }
+            }
         }
         composable(Routes.Profile) {
-            androidx.compose.material3.Text("Profile (temporal")
+            Column(modifier = Modifier.padding(16.dp)) {
+                Text("Profile (temporal)",style = MaterialTheme.typography.titleLarge)
+                Spacer(Modifier.height(16.dp))
+                Button(onClick = { nav.popBackStack() }) {
+                    Text("Volver")
+                }
+            }
         }
     }
 }
