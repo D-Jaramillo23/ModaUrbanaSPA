@@ -1,30 +1,23 @@
-package com.modaurbana.spa.ui.navigation
+package com.example.modaurbanaspa.ui.navigation
 
-import androidx.compose.material3.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-
-import androidx.compose.runtime.Composable
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.modaurbana.spa.ui.screens.LoginScreen
-import com.modaurbana.spa.ui.screens.RegisterScreen
-
-
-
-
 
 @Composable
 fun AppNav() {
     val nav = rememberNavController()
 
-
     NavHost(
         navController = nav,
         startDestination = Routes.Login
-    ) {
+    )
+
         composable(Routes.Login){
             Column (modifier = Modifier.padding(16.dp)) {
                 Text("Login (temporal", style = MaterialTheme.typography.titleLarge)
@@ -39,6 +32,7 @@ fun AppNav() {
 
             }
         }
+
         composable(Routes.Register){
             Column (modifier = Modifier.padding(16.dp)){
                 Text("Register (temporal)", style = MaterialTheme.typography.titleLarge)
@@ -52,6 +46,7 @@ fun AppNav() {
                 }
             }
         }
+
         composable(Routes.Home) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text("Home (temporal)", style = MaterialTheme.typography.titleLarge)
@@ -69,6 +64,7 @@ fun AppNav() {
                 }
             }
         }
+
         composable(Routes.Profile) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text("Profile (temporal)",style = MaterialTheme.typography.titleLarge)

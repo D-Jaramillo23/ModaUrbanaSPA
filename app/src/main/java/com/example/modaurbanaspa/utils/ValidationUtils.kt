@@ -1,4 +1,4 @@
-package com.modaurbana.spa.utils
+package com.example.modaurbanaspa.utils
 
 fun isValidEmail(input: String): Boolean=
     input.isNotBlank() && input.contains("@")&& input.contains(".")

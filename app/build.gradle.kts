@@ -6,13 +6,11 @@ plugins {
 
 android {
     namespace = "com.example.modaurbanaspa"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.modaurbanaspa"
-        minSdk = 24
+        applicationId = "com.proferoberto.holamundo"
+        minSdk = 29
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -43,7 +41,7 @@ android {
 
 dependencies {
     //Agrego la libreria de "navigation-compose" para usar "NavController" y "NavHost"
-    implementation("androidx.navigation:navigation-compose:2.9.5")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

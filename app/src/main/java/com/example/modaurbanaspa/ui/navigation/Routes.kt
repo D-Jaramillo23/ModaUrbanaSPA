@@ -1,4 +1,4 @@
-package com.modaurbana.spa.ui.navigation
+package com.example.modaurbanaspa.ui.navigation
 
 object Routes {
     const val Login = "Login"

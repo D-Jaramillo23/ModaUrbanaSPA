@@ -1,4 +1,4 @@
-package com.modaurbana.spa.ui.screens
+package com.example.modaurbanaspa.ui.screens
 
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -8,7 +8,8 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.input.*
-import com.modaurbana.spa.utils.*
+import com.example.modaurbanaspa.utils.isValidEmail
+import com.example.modaurbanaspa.utils.isValidPassword
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
