@@ -13,6 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.modaurbanaspa.ui.theme.ModaUrbanaSPATheme
 import com.modaurbana.spa.ui.navigation.AppNav
+import com.modaurbana.spa.ui.screens.RegisterScreen
+
 
 
 class MainActivity : ComponentActivity() {
