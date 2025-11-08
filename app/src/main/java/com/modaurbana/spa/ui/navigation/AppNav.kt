@@ -11,7 +11,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.modaurbana.spa.ui.screens.LoginScreen
 import com.modaurbana.spa.ui.screens.RegisterScreen
-
+import com.modaurbana.spa.ui.screens.HomeScreen
+import com.modaurbana.spa.ui.screens.ProfileScreen
 
 
 
@@ -42,27 +43,20 @@ fun AppNav() {
         }
 
         composable(Routes.Home) {
-
-            Column(Modifier.padding(16.dp)) {
-                Text("Home", style = MaterialTheme.typography.titleLarge)
-                Spacer(Modifier.height(12.dp))
-                Button(onClick = { nav.navigate(Routes.Profile) }) { Text("Ir a Profile") }
-                Spacer(Modifier.height(8.dp))
-                Button(onClick = {
+            HomeScreen(
+                onGoProfile = { nav.navigate(Routes.Profile) },
+                onLogout = {
                     nav.navigate(Routes.Login) {
                         popUpTo(Routes.Home) { inclusive = true }
                     }
-                }) { Text("Logout") }
-            }
+                }
+            )
         }
 
         composable(Routes.Profile) {
-
-            Column(Modifier.padding(16.dp)) {
-                Text("Profile", style = MaterialTheme.typography.titleLarge)
-                Spacer(Modifier.height(12.dp))
-                Button(onClick = { nav.popBackStack() }) { Text("Volver") }
-            }
+            ProfileScreen(
+                onBack = { nav.popBackStack() }
+            )
         }
     }
 }

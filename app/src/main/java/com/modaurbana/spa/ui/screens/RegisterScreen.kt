@@ -60,76 +60,77 @@ fun RegisterScreen(
                 .padding(padding)
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
-        ){
+        ) {
             OutlinedTextField(
-                value = fullName, onValueChange = { fullName = it},
-                label = { Text("Nombre completo")},
+                value = fullName, onValueChange = { fullName = it },
+                label = { Text("Nombre completo") },
                 singleLine = true,
                 isError = fullNameError != null,
-                supportingText =  { fullNameError?.let { Text(it)}},
+                supportingText = { fullNameError?.let { Text(it) } },
                 modifier = Modifier.fillMaxWidth()
             )
             OutlinedTextField(
-                value = address, onValueChange = {address = it},
-                label = {Text("Dirección")},
+                value = address, onValueChange = { address = it },
+                label = { Text("Dirección") },
                 singleLine = true,
                 isError = addressError != null,
-                supportingText = {addressError?.let {Text(it)}},
+                supportingText = { addressError?.let { Text(it) } },
                 modifier = Modifier.fillMaxWidth()
             )
 
             OutlinedTextField(
-                value = email, onValueChange = {email = it},
-                label = { Text("Correo")},
+                value = email, onValueChange = { email = it },
+                label = { Text("Correo") },
                 singleLine = true,
                 isError = emailError != null,
-                supportingText = { emailError?.let { Text(it) }},
-                keyboardOptions = KeyboardOptions (
+                supportingText = { emailError?.let { Text(it) } },
+                keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Email,
                     imeAction = ImeAction.Next
-                 ),
+                ),
                 modifier = Modifier.fillMaxWidth()
-            )}
+            )
 
-        OutlinedTextField(
-            value = pass, onValueChange = {pass = it},
-            label = {Text("Contraseña")},
-            singleLine = true,
-            isError = passError != null,
-            supportingText = { passError?.let {Text(it)}},
-            visualTransformation = if (showPass) VisualTransformation.None else PasswordVisualTransformation(),
-            trailingIcon = {
-                TextButton(onClick = {showPass = !showPass}) {
-                    Text(if (showPass) "Ocultar" else "Mostrar")
+            OutlinedTextField(
+                value = pass, onValueChange = { pass = it },
+                label = { Text("Contraseña") },
+                singleLine = true,
+                isError = passError != null,
+                supportingText = { passError?.let { Text(it) } },
+                visualTransformation = if (showPass) VisualTransformation.None else PasswordVisualTransformation(),
+                trailingIcon = {
+                    TextButton(onClick = { showPass = !showPass }) {
+                        Text(if (showPass) "Ocultar" else "Mostrar")
+                    }
+                },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Password,
+                    imeAction = ImeAction.Done
+                ),
+                modifier = Modifier.fillMaxWidth()
+            )
+
+
+            Button(
+                onClick = {
+                    if (!isLoading && validate()) {
+                        isLoading = true
+                        onRegisterOk()
+                        isLoading = false
+                    }
+                },
+                enabled = isFormFilled && !isLoading,
+                modifier = Modifier.fillMaxWidth()
+            )
+            {
+                if (isLoading) {
+                    CircularProgressIndicator(strokeWidth = 2.dp)
+
+                } else {
+                    Text("¡Crear Cuenta!")
                 }
-            },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Password,
-                imeAction = ImeAction.Done
-            ),
-            modifier = Modifier.fillMaxWidth()
-        )
-
-
-        Button(
-            onClick = {
-                if (!isLoading && validate()){
-                    isLoading = true
-                    onRegisterOk()
-                    isLoading = false
-                }
-            },
-            enabled = !isLoading,
-            modifier = Modifier.fillMaxWidth())
-        {
-            if (isLoading){
-                CircularProgressIndicator(strokeWidth = 2.dp)
-
-            } else {
-                Text("¿Aun no te creas tu cuenta?, ¡Crea tu cuenta ahora!")
             }
         }
-
     }
 }
 
