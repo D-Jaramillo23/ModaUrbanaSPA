@@ -44,6 +44,9 @@ android {
 dependencies {
     //Agrego la libreria de "navigation-compose" para usar "NavController" y "NavHost"
     implementation("androidx.navigation:navigation-compose:2.9.5")
+    //Usar la libreria de Coil para mostrar el avatar desde un Uri con AsyncImage.
+    implementation("io.coil-kt:coil-compose:2.6.0")
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
