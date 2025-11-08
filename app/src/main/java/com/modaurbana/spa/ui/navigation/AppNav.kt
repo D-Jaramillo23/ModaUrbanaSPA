@@ -15,67 +15,53 @@ import com.modaurbana.spa.ui.screens.RegisterScreen
 
 
 
-
 @Composable
 fun AppNav() {
     val nav = rememberNavController()
-
 
     NavHost(
         navController = nav,
         startDestination = Routes.Login
     ) {
-        composable(Routes.Login){
-            Column (modifier = Modifier.padding(16.dp)) {
-                Text("Login (temporal", style = MaterialTheme.typography.titleLarge)
-                Spacer(Modifier.height(16.dp))
-                Button(onClick = { nav.navigate(Routes.Register)}) {
-                    Text("Ir a Register")
+        composable(Routes.Login) {
+            LoginScreen(
+                onGoRegister = { nav.navigate(Routes.Register) },
+                onLoginOk = {
+                    nav.navigate(Routes.Home) {
+                        popUpTo(Routes.Login) { inclusive = true }
+                    }
                 }
-                Spacer(Modifier.height(8.dp))
-                Button(onClick = { nav.navigate(Routes.Home)}) {
-                    Text("Entrar (temporal)")
-                }
+            )
+        }
 
-            }
+        composable(Routes.Register) {
+            RegisterScreen(
+                onBackLogin = { nav.popBackStack() },
+                onRegisterOk = { nav.navigate(Routes.Login) }
+            )
         }
-        composable(Routes.Register){
-            Column (modifier = Modifier.padding(16.dp)){
-                Text("Register (temporal)", style = MaterialTheme.typography.titleLarge)
-                Spacer(Modifier.height(16.dp))
-                Button(onClick = { nav.popBackStack()}){
-                    Text("Volver a Login")
-                }
-                Spacer(Modifier.height(8.dp))
-                Button(onClick = { nav.navigate(Routes.Login)}) {
-                    Text("Registrarme (Temporal)")
-                }
-            }
-        }
+
         composable(Routes.Home) {
-            Column(modifier = Modifier.padding(16.dp)) {
-                Text("Home (temporal)", style = MaterialTheme.typography.titleLarge)
-                Spacer(Modifier.height(16.dp))
-                Button(onClick = { nav.navigate(Routes.Profile)}) {
-                    Text("Ir a profile")
-                }
+
+            Column(Modifier.padding(16.dp)) {
+                Text("Home", style = MaterialTheme.typography.titleLarge)
+                Spacer(Modifier.height(12.dp))
+                Button(onClick = { nav.navigate(Routes.Profile) }) { Text("Ir a Profile") }
                 Spacer(Modifier.height(8.dp))
                 Button(onClick = {
                     nav.navigate(Routes.Login) {
                         popUpTo(Routes.Home) { inclusive = true }
                     }
-                }) {
-                    Text("Logout(Temporal)")
-                }
+                }) { Text("Logout") }
             }
         }
+
         composable(Routes.Profile) {
-            Column(modifier = Modifier.padding(16.dp)) {
-                Text("Profile (temporal)",style = MaterialTheme.typography.titleLarge)
-                Spacer(Modifier.height(16.dp))
-                Button(onClick = { nav.popBackStack() }) {
-                    Text("Volver")
-                }
+
+            Column(Modifier.padding(16.dp)) {
+                Text("Profile", style = MaterialTheme.typography.titleLarge)
+                Spacer(Modifier.height(12.dp))
+                Button(onClick = { nav.popBackStack() }) { Text("Volver") }
             }
         }
     }
