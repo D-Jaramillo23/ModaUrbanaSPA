@@ -6,6 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.modaurbana.spa.ui.theme.AppColors
+import com.modaurbana.spa.ui.theme.AppTypography
+import androidx.compose.material3.TopAppBarDefaults
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -14,12 +18,16 @@ fun ProfileScreen(
     onBack: () -> Unit
 ) {
     Scaffold (
+        containerColor = AppColors.RegisterBg,
         topBar = {
             CenterAlignedTopAppBar(
                 title = { Text("Perfil")},
-                navigationIcon = { TextButton(onClick = onBack) {Text("Volver") }}
+                navigationIcon = { TextButton(onClick = onBack) {Text("Volver") }},
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                    containerColor = AppColors.OnScreenBg,
+                    titleContentColor = AppColors.OnScreenBg
             )
-        }
+            )}
     ) {
         padding ->
         Column (

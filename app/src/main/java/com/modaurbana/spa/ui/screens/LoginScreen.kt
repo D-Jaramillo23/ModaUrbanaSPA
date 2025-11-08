@@ -13,6 +13,10 @@ import com.modaurbana.spa.utils.isValidEmail
 import com.modaurbana.spa.utils.isValidPassword
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import com.modaurbana.spa.ui.theme.AppColors
+import com.modaurbana.spa.ui.theme.AppTypography
+import androidx.compose.material3.TopAppBarDefaults
+
 
 
 
@@ -54,12 +58,16 @@ fun LoginScreen(
     val isFormFilled = email.isNotBlank() && pass.isNotBlank()
 
     Scaffold (
+        containerColor = AppColors.LoginBg,
         topBar = { CenterAlignedTopAppBar(title = {Text("Login")})}
     ) { padding ->
         Column (
             Modifier.padding(padding).padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ){
+            Text("ModaUrbanaSPA", style = AppTypography.BrandTitle, color = AppColors.OnScreenBg)
+
+
             OutlinedTextField(
                 value = email, onValueChange = { email = it},
                 label = {Text("Correo")},

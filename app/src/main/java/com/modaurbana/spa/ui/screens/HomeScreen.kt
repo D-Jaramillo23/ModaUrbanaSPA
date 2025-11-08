@@ -6,6 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.modaurbana.spa.ui.theme.AppColors
+import com.modaurbana.spa.ui.theme.AppTypography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -15,6 +17,7 @@ fun HomeScreen(
     onLogout: () -> Unit
 ){
     Scaffold (
+        containerColor = AppColors.HomeBg,
         topBar = {CenterAlignedTopAppBar(title = {Text("Home")})}
     ) {
         padding ->
@@ -22,6 +25,7 @@ fun HomeScreen(
             Modifier.padding(padding).padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ){
+            Text("ModaUrbanaSPA", style = AppTypography.BrandTitle, color = AppColors.OnScreenBg)
           Text("ModaUrbana", style = MaterialTheme.typography.titleLarge)
             Button(onClick = onGoProfile, modifier = Modifier.fillMaxWidth()) {
                 Text("Ir al perfil")

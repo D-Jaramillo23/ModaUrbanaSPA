@@ -9,6 +9,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.input.*
 import com.modaurbana.spa.utils.*
+import com.modaurbana.spa.ui.theme.AppColors
+import com.modaurbana.spa.ui.theme.AppTypography
+import androidx.compose.material3.TopAppBarDefaults
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -48,6 +52,7 @@ fun RegisterScreen(
     val isFormFilled = fullName.isNotBlank() && address.isNotBlank() && email.isNotBlank() && pass.isNotBlank()
 
     Scaffold (
+        containerColor = AppColors.RegisterBg,
         topBar = {
             CenterAlignedTopAppBar(
                 title = { Text("Registrar")},
@@ -61,6 +66,7 @@ fun RegisterScreen(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
+            Text("ModaUrbanaSPA", style = AppTypography.BrandTitle, color = AppColors.OnScreenBg)
             OutlinedTextField(
                 value = fullName, onValueChange = { fullName = it },
                 label = { Text("Nombre completo") },
