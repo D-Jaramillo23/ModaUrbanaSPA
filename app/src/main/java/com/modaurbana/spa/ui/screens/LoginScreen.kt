@@ -1,6 +1,6 @@
 package com.modaurbana.spa.ui.screens
 
-import androidx.collection.mutableIntSetOf
+
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.material3.*
@@ -85,6 +85,10 @@ fun LoginScreen(
                         Text(if (showPass)"Ocultar" else "Mostrar")
                     }
                 },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Password,
+                    imeAction = ImeAction.Done
+                ),
                 modifier = Modifier.fillMaxWidth()
             )
 

@@ -126,7 +126,7 @@ fun RegisterScreen(
                 CircularProgressIndicator(strokeWidth = 2.dp)
 
             } else {
-                Text("Crear cuenta")
+                Text("¿Aun no te creas tu cuenta?, ¡Crea tu cuenta ahora!")
             }
         }
 
